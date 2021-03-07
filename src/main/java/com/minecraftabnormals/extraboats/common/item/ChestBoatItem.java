@@ -29,7 +29,7 @@ public class ChestBoatItem extends ExtraBoatsBoatItem {
 		compoundnbt.putString("Chest", ForgeRegistries.ITEMS.getKey(chest).toString());
 	}
 
-	private static Item getChest(ItemStack itemStack) {
+	public static Item getChest(ItemStack itemStack) {
 		CompoundNBT compoundnbt = itemStack.getTag();
 
 		if (compoundnbt != null) {
