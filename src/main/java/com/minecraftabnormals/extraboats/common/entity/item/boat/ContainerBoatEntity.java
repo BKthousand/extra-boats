@@ -126,6 +126,9 @@ public abstract class ContainerBoatEntity extends ExtraBoatsBoatEntity implement
 
 	@Override
 	public void remove(boolean keepData) {
+		if (!this.world.isRemote && this.dropContentsWhenDead) {
+			InventoryHelper.dropInventoryItems(this.world, this, this);
+		}
 		super.remove(keepData);
 		if (!keepData) itemHandler.invalidate();
 	}
