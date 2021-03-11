@@ -23,6 +23,7 @@ import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public abstract class ExtraBoatsBoatEntity extends BoatEntity {
@@ -112,7 +113,7 @@ public abstract class ExtraBoatsBoatEntity extends BoatEntity {
 				boolean flag = source.getTrueSource() instanceof PlayerEntity && ((PlayerEntity) source.getTrueSource()).abilities.isCreativeMode;
 				if (flag || this.getDamageTaken() > 40.0F) {
 					if (!flag && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
-						this.killBoat();
+						this.killBoat(source);
 					}
 
 					this.remove();
@@ -125,7 +126,7 @@ public abstract class ExtraBoatsBoatEntity extends BoatEntity {
 		}
 	}
 
-	public void killBoat() {
+	public void killBoat(DamageSource source) {
 		this.entityDropItem(this.getItemDropBoat());
 		this.entityDropItem(((IDataManager) this).getValue(ExtraBoatsDataProcessors.BANNER));
 	}

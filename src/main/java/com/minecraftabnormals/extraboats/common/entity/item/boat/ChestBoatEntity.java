@@ -18,6 +18,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -73,8 +74,8 @@ public class ChestBoatEntity extends ContainerBoatEntity {
 	}
 	
 	@Override
-	public void killBoat() {
-		super.killBoat();
+	public void killBoat(DamageSource source) {
+		super.killBoat(source);
 		this.entityDropItem(this.getChest());
 	}
 

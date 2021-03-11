@@ -1,9 +1,11 @@
 package com.minecraftabnormals.extraboats.common.entity.item.boat;
 
 import com.minecraftabnormals.extraboats.core.BoatHelper;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.entity.monster.piglin.PiglinTasks;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -20,10 +22,7 @@ import net.minecraft.loot.LootParameters;
 import net.minecraft.loot.LootTable;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
@@ -45,16 +44,22 @@ public abstract class ContainerBoatEntity extends ExtraBoatsBoatEntity implement
 	@Override
 	protected void dropBreakItems() {
 		super.dropBreakItems();
-		if (!this.world.isRemote && this.dropContentsWhenDead && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
+		if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
 			InventoryHelper.dropInventoryItems(this.world, this, this);
 		}
 	}
 
 	@Override
-	public void killBoat() {
-		super.killBoat();
-		if (!this.world.isRemote && this.dropContentsWhenDead && this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
+	public void killBoat(DamageSource source) {
+		super.killBoat(source);
+		if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
 			InventoryHelper.dropInventoryItems(this.world, this, this);
+			if (!this.world.isRemote) {
+				Entity entity = source.getImmediateSource();
+				if (entity != null && entity.getType() == EntityType.PLAYER) {
+					PiglinTasks.func_234478_a_((PlayerEntity)entity, true);
+				}
+			}
 		}
 	}
 
@@ -160,11 +165,18 @@ public abstract class ContainerBoatEntity extends ExtraBoatsBoatEntity implement
 
 	@Override
 	public ActionResultType processInitialInteract(PlayerEntity player, Hand hand) {
-		if (player.isSneaking()) {
+		ActionResultType ret = super.processInitialInteract(player, hand);
+		if (player.isSecondaryUseActive()){
+			if (ret.isSuccessOrConsume()) return ret;
 			player.openContainer(this);
-			return ActionResultType.func_233537_a_(this.world.isRemote);
+			if (!player.world.isRemote) {
+				PiglinTasks.func_234478_a_(player, true);
+				return ActionResultType.CONSUME;
+			} else {
+				return ActionResultType.SUCCESS;
+			}
 		} else {
-			return super.processInitialInteract(player, hand);
+			return ret;
 		}
 	}
 

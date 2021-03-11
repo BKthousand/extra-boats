@@ -6,9 +6,11 @@ import com.minecraftabnormals.extraboats.common.entity.item.boat.ChestBoatEntity
 import com.minecraftabnormals.extraboats.common.entity.item.boat.FurnaceBoatEntity;
 import com.minecraftabnormals.extraboats.common.entity.item.boat.LargeBoatEntity;
 import com.minecraftabnormals.extraboats.core.ExtraBoats;
+
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;

@@ -3,6 +3,7 @@ package com.minecraftabnormals.extraboats.common.item.crafting;
 import com.minecraftabnormals.extraboats.common.entity.item.boat.ExtraBoatsBoatEntity;
 import com.minecraftabnormals.extraboats.common.item.ChestBoatItem;
 import com.minecraftabnormals.extraboats.core.BoatHelper;
+
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraft.item.crafting.SpecialRecipeSerializer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
 import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;

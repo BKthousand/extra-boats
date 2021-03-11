@@ -2,6 +2,7 @@ package com.minecraftabnormals.extraboats.common.entity.item.boat;
 
 import com.minecraftabnormals.extraboats.core.BoatHelper;
 import com.minecraftabnormals.extraboats.core.registry.ExtraBoatsEntities;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FurnaceBlock;
@@ -20,14 +21,11 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+
 import net.minecraftforge.fml.network.FMLPlayMessages;
 
 import javax.annotation.Nullable;
@@ -66,8 +64,8 @@ public class FurnaceBoatEntity extends ExtraBoatsBoatEntity {
 	}
 
 	@Override
-	public void killBoat() {
-		super.killBoat();
+	public void killBoat(DamageSource source) {
+		super.killBoat(source);
 		this.entityDropItem(Blocks.FURNACE);
 	}
 

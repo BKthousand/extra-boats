@@ -2,6 +2,7 @@ package com.minecraftabnormals.extraboats.common.dispenser;
 
 import com.minecraftabnormals.extraboats.common.entity.item.boat.ExtraBoatsBoatEntity;
 import com.minecraftabnormals.extraboats.common.entity.item.boat.FurnaceBoatEntity;
+
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;

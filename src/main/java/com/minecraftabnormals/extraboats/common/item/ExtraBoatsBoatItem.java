@@ -1,6 +1,7 @@
 package com.minecraftabnormals.extraboats.common.item;
 
 import com.minecraftabnormals.extraboats.common.entity.item.boat.ExtraBoatsBoatEntity;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

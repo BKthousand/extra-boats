@@ -2,6 +2,7 @@ package com.minecraftabnormals.extraboats.common.item;
 
 import com.minecraftabnormals.extraboats.common.entity.item.boat.ExtraBoatsBoatEntity;
 import com.minecraftabnormals.extraboats.common.entity.item.boat.FurnaceBoatEntity;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RayTraceResult;

@@ -6,8 +6,10 @@ import com.minecraftabnormals.extraboats.common.item.FurnaceBoatItem;
 import com.minecraftabnormals.extraboats.common.item.LargeBoatItem;
 import com.minecraftabnormals.extraboats.core.ExtraBoats;
 import com.minecraftabnormals.extraboats.core.compatibility.*;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;

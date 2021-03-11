@@ -2,7 +2,9 @@ package com.minecraftabnormals.extraboats.core.other;
 
 import com.minecraftabnormals.extraboats.common.item.crafting.ChestBoatRecipe;
 import com.minecraftabnormals.extraboats.core.ExtraBoats;
+
 import net.minecraft.item.crafting.IRecipeSerializer;
+
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
